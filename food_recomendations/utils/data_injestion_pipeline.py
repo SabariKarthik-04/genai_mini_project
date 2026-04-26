@@ -3,7 +3,7 @@ from .chroma_initializer import ChromaInitializer
 import chromadb,uuid
 
 EMBEDDING_MODEL = 'hf.co/CompendiumLabs/bge-base-en-v1.5-gguf'
-LANGUAGE_MODEL = 'hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF'
+# LANGUAGE_MODEL = 'hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF'
 
 
 class Data_Ingestion_Pipeline:
@@ -11,7 +11,7 @@ class Data_Ingestion_Pipeline:
     colection: chromadb.api.models.Collection.Collection
     def __init__(self):
         chroma_initializer = ChromaInitializer(embedding_model=EMBEDDING_MODEL)
-        self.client, self.collection = chroma_initializer.initialize_local_embedding(path=r"C:\Users\SabariKarthikS\Desktop\Gen_AI\Mini_Project\food_recomendations\chroma_db",collection_name="recipes_data")
+        self.client, self.collection = chroma_initializer.initialize_local_embedding(path=r"D:\Sabari\Learning\projects\GENAI_MINI_PROJECT\genai_mini_project\food_recomendations\chroma_db",collection_name="recipes_data")
 
 
     def _batch_data_ingestor(self,collection, data, batch_size=400):

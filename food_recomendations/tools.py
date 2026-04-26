@@ -1,5 +1,5 @@
 import ast
-from utils.data_injestion_pipeline import Data_Ingestion_Pipeline
+from .utils.data_injestion_pipeline import Data_Ingestion_Pipeline
 
 def main():
     data_ingestion_pipeline = Data_Ingestion_Pipeline()

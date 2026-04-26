@@ -1,13 +1,9 @@
 import os
-# Keep this to ensure OpenTelemetry doesn't crash FastAPI's async loops
-os.environ["OTEL_SDK_DISABLED"] = "true"
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
-# Notice how many broken ADK imports we get to delete!
 from agent import root_agent
 
 app = FastAPI()
