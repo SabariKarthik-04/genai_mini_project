@@ -2,19 +2,15 @@ from google.adk.agents.llm_agent import Agent
 from google.adk.models.lite_llm import LiteLlm
 from dotenv import load_dotenv
 import os
-from .tools import find
+from tools import find
 from google.adk.sessions import InMemorySessionService
-from .system_prompt import SYSTEM_PROMPT
+from system_prompt import SYSTEM_PROMPT
+from find_prompt import FIND_AGENT_PROMPT
 from google.adk.runners import Runner
 from google.genai import types 
 
 load_dotenv()
 os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
-
-
-
-
-
 
 async def image_search(tool_context, base64_string):
     APP_NAME = "food_recomendations"
@@ -83,7 +79,7 @@ vision_model = LiteLlm(
 vision_agent = Agent(
     model=vision_model,
     name="fridge_inspector",
-    instruction="Analyze the image and return a comma-separated list of raw ingredients."
+    instruction=FIND_AGENT_PROMPT
 )
 
 groq_model = LiteLlm(
